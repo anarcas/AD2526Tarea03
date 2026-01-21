@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Configuración de la conexión -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/centroseducacioninfantil</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+
+        <!-- Dialecto de la base de datos -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Configuración de las sesiones -->
+        <property name="hibernate.hbm2ddl.auto">update</property> <!-- update crea y actualiza tablas -->
+        <property name="hibernate.show_sql">true</property> <!-- Mostrar las consultas SQL -->
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Clases mapeadas -->
+        <mapping class="com.mycompany._ad_u03.Guarderia"/>
+        <mapping class="com.mycompany._ad_u03.EducadorInfantil"/>
+
+    </session-factory>
+</hibernate-configuration>
