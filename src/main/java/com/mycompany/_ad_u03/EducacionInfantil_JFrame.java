@@ -17,7 +17,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import org.hibernate.Query;
@@ -30,6 +29,8 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
 
     static String etiquetaEducadorBorrado;
     static String etiquetaGuarderiaBorrada;
+    static String listadoGuarderias;
+    static String etiquetaListadoGuarderias;
 
     /**
      * Creates new form EducacionInfantil_JFrame
@@ -88,12 +89,10 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         jPanelEliminarGuarderia = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        cdegTextField = new javax.swing.JTextField();
         eliminarGuarderiaButton = new javax.swing.JButton();
         jComboBoxGuarderias = new javax.swing.JComboBox<>();
         jLabelBorrarGuarderia = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jPanelEliminarEducador = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -101,6 +100,8 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         jComboBoxEducadores = new javax.swing.JComboBox<>();
         jLabelBorrarEducador = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
         listarGuarderiaButton = new javax.swing.JButton();
         jLabelListadoGuarderias = new javax.swing.JLabel();
 
@@ -331,8 +332,6 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
 
         jLabel17.setText("Código");
 
-        cdegTextField.setToolTipText("Tipo de dato varchar(5)");
-
         eliminarGuarderiaButton.setText("Borrar");
         eliminarGuarderiaButton.setToolTipText("Borrar una guardería");
         eliminarGuarderiaButton.addActionListener(new java.awt.event.ActionListener() {
@@ -366,9 +365,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                         .addComponent(jComboBoxGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84)
                         .addComponent(eliminarGuarderiaButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cdegTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanelEliminarGuarderiaLayout.setVerticalGroup(
             jPanelEliminarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,20 +376,15 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                 .addGroup(jPanelEliminarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(jComboBoxGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eliminarGuarderiaButton)
-                    .addComponent(cdegTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eliminarGuarderiaButton))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelBorrarGuarderia)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("1) Añadir Objetos");
         jLabel1.setToolTipText("");
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel15.setText("3) Listar Guarderías");
-        jLabel15.setToolTipText("");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Educadores");
@@ -444,12 +436,16 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                     .addComponent(eliminarEducadorButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelBorrarEducador)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel20.setText("2) Eliminar Objetos");
         jLabel20.setToolTipText("");
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel15.setText("3) Listar Guarderías");
+        jLabel15.setToolTipText("");
 
         listarGuarderiaButton.setText("Listar");
         listarGuarderiaButton.setToolTipText("Listar todas las guarderías");
@@ -463,6 +459,32 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         jLabelListadoGuarderias.setText("Listado de guarderías");
         jLabelListadoGuarderias.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addGap(81, 81, 81)
+                        .addComponent(listarGuarderiaButton))
+                    .addComponent(jLabelListadoGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(listarGuarderiaButton))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelListadoGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -470,20 +492,16 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanelAgregarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelEliminarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabelListadoGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(listarGuarderiaButton))
-                                    .addComponent(jLabel15))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jPanelAgregarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(140, 140, 140))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jPanelEliminarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanelAgregarEducador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanelEliminarEducador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -505,21 +523,16 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                     .addComponent(jPanelAgregarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanelEliminarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel15))
+                    .addComponent(jPanelEliminarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelEliminarEducador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(listarGuarderiaButton)
-                    .addComponent(jLabelListadoGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(327, 327, 327)
                     .addComponent(jLabel20)
-                    .addContainerGap(342, Short.MAX_VALUE)))
+                    .addContainerGap(389, Short.MAX_VALUE)))
         );
 
         pack();
@@ -666,9 +679,10 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
-
-            jLabelListadoGuarderias.setText(consultarGuarderia(session).toString());
-            System.out.println(consultarGuarderia(session).toString());
+            consultarGuarderia(session);
+            jLabelListadoGuarderias.setText(etiquetaListadoGuarderias);
+            System.out.print(listadoGuarderias);
+             JOptionPane.showMessageDialog(null, listadoGuarderias);
             // Se cierra la sesión
             session.close();
 
@@ -842,14 +856,23 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
 
         Transaction tst = ss.beginTransaction();
         List<Guarderia> guarderias = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sbHTML = new StringBuilder("<html>");
+        String texto;
+        
         try {
             Query<Guarderia> query = ss.createQuery("from Guarderia g", Guarderia.class);
             guarderias = query.list();
 
             for (Guarderia guarde : guarderias) {
-                System.out.println("Guardería: " + guarde.getNombre() + " --Código: " + guarde.getCodigo() + " --Capacidad: " + guarde.getCapacidad() + " --Presupuesto: " + guarde.getPresupuesto());
+                texto="Guardería: " + guarde.getNombre() + " --Código: " + guarde.getCodigo() + " --Capacidad: " + guarde.getCapacidad() + " --Presupuesto: " + guarde.getPresupuesto();
+                System.out.println(texto);
+                sb.append(texto).append("\n");
+                sbHTML.append(texto).append("<br>");
             }
-
+            sbHTML.append("</html>");
+                listadoGuarderias=sb.toString();
+                etiquetaListadoGuarderias=sbHTML.toString();
             // Se confirma la transacción
             tst.commit();
 
@@ -1003,7 +1026,6 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     private javax.swing.JButton agregarGuarderiaButton;
     private javax.swing.JTextField apeTextField;
     private javax.swing.JTextField cdagTextField;
-    private javax.swing.JTextField cdegTextField;
     private javax.swing.JTextField cgeTextField;
     private javax.swing.JTextField cpgTextField;
     private javax.swing.JTextField dniaTextField;
@@ -1036,6 +1058,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelBorrarEducador;
     private javax.swing.JLabel jLabelBorrarGuarderia;
     private javax.swing.JLabel jLabelListadoGuarderias;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelAgregarEducador;
     private javax.swing.JPanel jPanelAgregarGuarderia;
     private javax.swing.JPanel jPanelEliminarEducador;
