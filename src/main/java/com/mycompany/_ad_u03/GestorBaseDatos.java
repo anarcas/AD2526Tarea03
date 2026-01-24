@@ -14,7 +14,7 @@ import org.hibernate.exception.ConstraintViolationException;
  *
  * @author anaranjo
  */
-public class App {
+public class GestorBaseDatos {
 
     public static void main(String[] args) {
         String codigo = "OPQ05";
