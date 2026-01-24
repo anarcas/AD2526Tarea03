@@ -35,6 +35,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     static String etiquetaListadoEducadores;
     static String listadoEducadoresSalarioLimite;
     static String etiquetaListadoEducadoresSalarioLimite;
+    static String etiquetaSueldoActualizado;
 
     /**
      * Creates new form EducacionInfantil_JFrame
@@ -52,6 +53,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
 
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,6 +75,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         ppgTextField = new javax.swing.JTextField();
         agregarGuarderiaButton = new javax.swing.JButton();
         limpiarAgregarGuarderiaButton = new javax.swing.JButton();
+        jLabelAgregarGuardería = new javax.swing.JLabel();
         jPanelAgregarEducador = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -91,6 +94,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         sleTextField = new javax.swing.JTextField();
         limpiarAgregarEducadorButton = new javax.swing.JButton();
         agregarEducadorButton = new javax.swing.JButton();
+        jLabelAgregarEducador = new javax.swing.JLabel();
         jPanelEliminarGuarderia = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -120,9 +124,19 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         jLabelListadoEducadoresSalarioLimite = new javax.swing.JLabel();
         salarioLimiteTextField = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
+        jPanelEliminarEducador1 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        actualizarSueldoEducadorButton = new javax.swing.JButton();
+        jComboBoxEducadoresSueldo = new javax.swing.JComboBox<>();
+        jLabelActualizarSalarioEducador = new javax.swing.JLabel();
+        nuevoSueldoTextField = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        salirButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanelAgregarGuarderia.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanelAgregarGuarderia.setFocusCycleRoot(true);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -160,29 +174,43 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabelAgregarGuardería.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelAgregarGuardería.setText("Guardería pendiente de añadir");
+        jLabelAgregarGuardería.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabelAgregarGuardería.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout jPanelAgregarGuarderiaLayout = new javax.swing.GroupLayout(jPanelAgregarGuarderia);
         jPanelAgregarGuarderia.setLayout(jPanelAgregarGuarderiaLayout);
         jPanelAgregarGuarderiaLayout.setHorizontalGroup(
             jPanelAgregarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgregarGuarderiaLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap()
                 .addGroup(jPanelAgregarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelAgregarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ppgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cdagTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cpgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nmgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelAgregarGuarderiaLayout.createSequentialGroup()
-                        .addComponent(limpiarAgregarGuarderiaButton)
+                        .addGroup(jPanelAgregarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6))
                         .addGap(18, 18, 18)
-                        .addComponent(agregarGuarderiaButton)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addGroup(jPanelAgregarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelAgregarGuarderiaLayout.createSequentialGroup()
+                                .addGroup(jPanelAgregarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ppgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cdagTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cpgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nmgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanelAgregarGuarderiaLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(limpiarAgregarGuarderiaButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(agregarGuarderiaButton)
+                                .addGap(29, 29, 29))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgregarGuarderiaLayout.createSequentialGroup()
+                        .addComponent(jLabelAgregarGuardería, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanelAgregarGuarderiaLayout.setVerticalGroup(
             jPanelAgregarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,9 +237,12 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                 .addGroup(jPanelAgregarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(limpiarAgregarGuarderiaButton)
                     .addComponent(agregarGuarderiaButton))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelAgregarGuardería)
+                .addContainerGap())
         );
 
+        jPanelAgregarEducador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanelAgregarEducador.setFocusCycleRoot(true);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -261,6 +292,11 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabelAgregarEducador.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelAgregarEducador.setText("Educador infantil pendiente de añadir");
+        jLabelAgregarEducador.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabelAgregarEducador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout jPanelAgregarEducadorLayout = new javax.swing.GroupLayout(jPanelAgregarEducador);
         jPanelAgregarEducador.setLayout(jPanelAgregarEducadorLayout);
         jPanelAgregarEducadorLayout.setHorizontalGroup(
@@ -275,39 +311,41 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel10))
+                                .addGap(58, 58, 58)
                                 .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelAgregarEducadorLayout.createSequentialGroup()
-                                        .addGap(58, 58, 58)
-                                        .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(dniaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(nmeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgregarEducadorLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                                        .addComponent(apeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(dniaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nmeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(apeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanelAgregarEducadorLayout.createSequentialGroup()
                                 .addGap(107, 107, 107)
                                 .addComponent(cgeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel14))
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel11)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgregarEducadorLayout.createSequentialGroup()
+                                .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(limpiarAgregarEducadorButton))
+                                .addGap(24, 24, 24))
+                            .addGroup(jPanelAgregarEducadorLayout.createSequentialGroup()
+                                .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel13))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
                     .addGroup(jPanelAgregarEducadorLayout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgregarEducadorLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(limpiarAgregarEducadorButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(agregarEducadorButton)
-                        .addGap(61, 61, 61)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fneTextField)
-                    .addComponent(faeTextField)
-                    .addComponent(sleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(fneTextField)
+                        .addComponent(faeTextField)
+                        .addComponent(sleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(agregarEducadorButton))
+                .addGap(18, 18, 18))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgregarEducadorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelAgregarEducador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanelAgregarEducadorLayout.setVerticalGroup(
             jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,20 +356,20 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                 .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(dniaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(fneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addGap(6, 6, 6)
                 .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(nmeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(faeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(faeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(apeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel13)
-                    .addComponent(sleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
@@ -340,8 +378,12 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                 .addGroup(jPanelAgregarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(limpiarAgregarEducadorButton)
                     .addComponent(agregarEducadorButton))
-                .addGap(35, 35, 35))
+                .addGap(9, 9, 9)
+                .addComponent(jLabelAgregarEducador)
+                .addContainerGap())
         );
+
+        jPanelEliminarGuarderia.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Guarderías");
@@ -361,6 +403,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         jLabelBorrarGuarderia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelBorrarGuarderia.setText("Nombre de la guardería a eliminar");
         jLabelBorrarGuarderia.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabelBorrarGuarderia.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanelEliminarGuarderiaLayout = new javax.swing.GroupLayout(jPanelEliminarGuarderia);
         jPanelEliminarGuarderia.setLayout(jPanelEliminarGuarderiaLayout);
@@ -368,38 +411,40 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             jPanelEliminarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEliminarGuarderiaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel17)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBoxGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84)
-                .addComponent(eliminarGuarderiaButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEliminarGuarderiaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelBorrarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelEliminarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelEliminarGuarderiaLayout.createSequentialGroup()
+                        .addGroup(jPanelEliminarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelEliminarGuarderiaLayout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(84, 84, 84)
+                                .addComponent(eliminarGuarderiaButton))
+                            .addComponent(jLabel16))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabelBorrarGuarderia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanelEliminarGuarderiaLayout.createSequentialGroup()
-                .addComponent(jLabel16)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelEliminarGuarderiaLayout.setVerticalGroup(
             jPanelEliminarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEliminarGuarderiaLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel16)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelEliminarGuarderiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(jComboBoxGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eliminarGuarderiaButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelBorrarGuarderia)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("1) Añadir Objetos");
         jLabel1.setToolTipText("");
+
+        jPanelEliminarEducador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Educadores");
@@ -419,6 +464,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         jLabelBorrarEducador.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelBorrarEducador.setText("Nombre del educador a eliminar");
         jLabelBorrarEducador.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabelBorrarEducador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanelEliminarEducadorLayout = new javax.swing.GroupLayout(jPanelEliminarEducador);
         jPanelEliminarEducador.setLayout(jPanelEliminarEducadorLayout);
@@ -427,20 +473,23 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             .addGroup(jPanelEliminarEducadorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelEliminarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelBorrarEducador, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelBorrarEducador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelEliminarEducadorLayout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBoxEducadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(eliminarEducadorButton))
-                    .addComponent(jLabel18))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addGroup(jPanelEliminarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addGroup(jPanelEliminarEducadorLayout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxEducadores, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51)
+                                .addComponent(eliminarEducadorButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanelEliminarEducadorLayout.setVerticalGroup(
             jPanelEliminarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEliminarEducadorLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(jLabel18)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelEliminarEducadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -449,12 +498,14 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                     .addComponent(eliminarEducadorButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelBorrarEducador)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel20.setText("2) Eliminar Objetos");
         jLabel20.setToolTipText("");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setText("3) Listar Guarderías");
@@ -471,6 +522,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         jLabelListadoGuarderias.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelListadoGuarderias.setText("Listado de guarderías");
         jLabelListadoGuarderias.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabelListadoGuarderias.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -480,8 +532,8 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelListadoGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabelListadoGuarderias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -497,8 +549,10 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                     .addComponent(listarGuarderiaButton))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelListadoGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel21.setText("4) Listar Educadores");
@@ -515,6 +569,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         jLabelListadoEducadores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelListadoEducadores.setText("Listado de educadores");
         jLabelListadoEducadores.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabelListadoEducadores.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jComboBoxNombreGuarderia.setToolTipText("");
 
@@ -522,17 +577,19 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelListadoEducadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelListadoEducadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel21)
-                        .addGap(41, 41, 41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                         .addComponent(jComboBoxNombreGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(listarEducadoresButton)))
-                .addGap(19, 19, 19))
+                        .addGap(76, 76, 76)
+                        .addComponent(listarEducadoresButton)
+                        .addGap(19, 19, 19))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -546,6 +603,8 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                 .addComponent(jLabelListadoEducadores, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel22.setText("5) Listar Educadores");
@@ -562,6 +621,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         jLabelListadoEducadoresSalarioLimite.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelListadoEducadoresSalarioLimite.setText("Listado de educadores");
         jLabelListadoEducadoresSalarioLimite.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabelListadoEducadoresSalarioLimite.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         salarioLimiteTextField.setToolTipText("Tipo de dato float");
 
@@ -571,19 +631,20 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelListadoEducadoresSalarioLimite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel22)
-                        .addGap(52, 52, 52)
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel23)
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(salarioLimiteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(listarEducadoresSalarioLimiteButton)))
-                .addGap(19, 19, 19))
+                        .addGap(33, 33, 33)
+                        .addComponent(listarEducadoresSalarioLimiteButton)
+                        .addGap(0, 26, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -599,6 +660,81 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        jPanelEliminarEducador1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel24.setText("6) Actualizar salario Educador Infantil");
+
+        jLabel25.setText("DNI");
+
+        actualizarSueldoEducadorButton.setText("Actualizar");
+        actualizarSueldoEducadorButton.setToolTipText("Actualizar el sueldo del educador");
+        actualizarSueldoEducadorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarSueldoEducadorButtonActionPerformed(evt);
+            }
+        });
+
+        jComboBoxEducadoresSueldo.setToolTipText("");
+
+        jLabelActualizarSalarioEducador.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelActualizarSalarioEducador.setText("Nombre del educador a eliminar");
+        jLabelActualizarSalarioEducador.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabelActualizarSalarioEducador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        nuevoSueldoTextField.setToolTipText("Tipo de dato float");
+
+        jLabel26.setText("Nuevo Salario");
+
+        javax.swing.GroupLayout jPanelEliminarEducador1Layout = new javax.swing.GroupLayout(jPanelEliminarEducador1);
+        jPanelEliminarEducador1.setLayout(jPanelEliminarEducador1Layout);
+        jPanelEliminarEducador1Layout.setHorizontalGroup(
+            jPanelEliminarEducador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEliminarEducador1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelEliminarEducador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelEliminarEducador1Layout.createSequentialGroup()
+                        .addComponent(jLabelActualizarSalarioEducador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanelEliminarEducador1Layout.createSequentialGroup()
+                        .addGroup(jPanelEliminarEducador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelEliminarEducador1Layout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxEducadoresSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51)
+                                .addComponent(jLabel26)
+                                .addGap(33, 33, 33)
+                                .addComponent(nuevoSueldoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel24))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(actualizarSueldoEducadorButton)
+                        .addGap(69, 69, 69))))
+        );
+        jPanelEliminarEducador1Layout.setVerticalGroup(
+            jPanelEliminarEducador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEliminarEducador1Layout.createSequentialGroup()
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEliminarEducador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jComboBoxEducadoresSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actualizarSueldoEducadorButton)
+                    .addComponent(nuevoSueldoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelActualizarSalarioEducador)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+
+        salirButton.setText("Salir");
+        salirButton.setToolTipText("Cerrar el programa");
+        salirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -606,57 +742,51 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanelEliminarGuarderia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanelAgregarGuarderia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanelAgregarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(43, 43, 43))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jPanelEliminarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanelAgregarEducador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelEliminarEducador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(29, 29, 29)
-                    .addComponent(jLabel20)
-                    .addContainerGap(984, Short.MAX_VALUE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanelAgregarEducador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanelEliminarEducador1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanelEliminarEducador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(salirButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelAgregarEducador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelAgregarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelEliminarEducador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelEliminarGuarderia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelAgregarEducador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelAgregarGuarderia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelEliminarEducador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelEliminarGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(327, 327, 327)
-                    .addComponent(jLabel20)
-                    .addContainerGap(644, Short.MAX_VALUE)))
+                        .addComponent(jPanelEliminarEducador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(salirButton))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -667,30 +797,116 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
 
         // Declaración de campos de la tabla Guarderia
         // Iniciación de variables vinculadas a los campos de texto de la interfaz
-        String dni = dniaTextField.getText();
-        String nombre = nmeTextField.getText();
-        String apellidos = apeTextField.getText();
-        String codigoGuarde = cgeTextField.getText();
+        String dni = dniaTextField.getText().toUpperCase();
+        String nombre = nmeTextField.getText().toUpperCase();
+        String apellidos = apeTextField.getText().toUpperCase();
+        String codigoGuarde = cgeTextField.getText().toUpperCase();
         Guarderia guarde = new Guarderia(codigoGuarde);
-        String fechaNac = faeTextField.getText();
+        String fechaNac = fneTextField.getText();
         String fechaAlt = faeTextField.getText();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaNacimiento = null;
         Date fechaAlta = null;
-
+        Float salario = null;
         try {
+            salario = Float.parseFloat(sleTextField.getText());
+        } catch (NumberFormatException e) {
+            // Salario educador
+            String nominaEducador= String.valueOf(salario);
+            while (!validarNumeroDosDecimales(nominaEducador)) {
+                nominaEducador = JOptionPane.showInputDialog(
+                        this,
+                        "Existe un error --> Salario del educador: introduce un valor tipo de dato float (número decimal).",
+                        "Solicitud del presupuesto",
+                        JOptionPane.QUESTION_MESSAGE
+                );
+            }
+            sleTextField.setText(nominaEducador);
+        }
+        //Validación de datos de entrada en campos de texto
+        // DNI educador
+        while (!validarTexto(dni,9) || dni==null) {
+            dni = JOptionPane.showInputDialog(
+                    this,
+                    "Existe un error --> DNI del educador: introduce un DNI tipo de dato varchar, máximo 9 caracteres.",
+                    "Solicitud del DNI",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+        }
+        dniaTextField.setText(dni.toUpperCase());
+        
+        // Nombre educador
+        while (!validarTexto(nombre,30)) {
+            nombre = JOptionPane.showInputDialog(
+                    this,
+                    "Existe un error --> Nombre del educador: introduce un nombre tipo de dato varchar, máximo 30 caracteres.",
+                    "Solicitud del nombre",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+        }
+        nmeTextField.setText(nombre.toUpperCase());
+        
+        // Apellidos educador
+        while (!validarTexto(apellidos,70)) {
+            apellidos = JOptionPane.showInputDialog(
+                    this,
+                    "Existe un error --> Apellidos del educador: introduce un nombre tipo de dato varchar, máximo 70 caracteres.",
+                    "Solicitud del nombre",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+        }
+        apeTextField.setText(apellidos.toUpperCase());
+        
+        
+        // Código guardería
+        while (!validarTexto(codigoGuarde,5) || codigoGuarde==null) {
+            codigoGuarde = JOptionPane.showInputDialog(
+                    this,
+                    "Existe un error --> Código de guardería: introduce un código tipo de dato varchar, máximo 5 caracteres.",
+                    "Solicitud del código",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+        }
+        cgeTextField.setText(codigoGuarde.toUpperCase());
+  
+        
+         // Fechas
+         try {
             fechaNacimiento = formato.parse(fechaNac);
             fechaAlta = formato.parse(fechaAlt);
         } catch (ParseException ex) {
             Logger.getLogger(EducacionInfantil_JFrame.class.getName()).log(Level.SEVERE, null, ex);
+            
+        while (!validarFormatoFecha(fechaNac)) {
+            fechaNac = JOptionPane.showInputDialog(
+                    this,
+                    "Existe un error --> Fecha de nacimiento: introduce un valor formato fecha dd/mm/aaaa.",
+                    "Solicitud de la fecha de nacimiento",
+                    JOptionPane.QUESTION_MESSAGE
+            );
         }
-        Float salario = Float.parseFloat(sleTextField.getText());
+        fneTextField.setText(fechaNac);
+        
+        while (!validarFormatoFecha(fechaAlt)) {
+            fechaAlt = JOptionPane.showInputDialog(
+                    this,
+                    "Existe un error --> Fecha de alta: introduce un valor formato fecha dd/mm/aaaa.",
+                    "Solicitud de la fecha de alta",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+        }
+        faeTextField.setText(fechaAlt);
+            
+            
+        }
+        
 
         // Se inicia una sesión
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
             agregarEducador(session, dni, nombre, apellidos, fechaNacimiento, fechaAlta, salario, guarde);
+            jLabelAgregarEducador.setText("Educador infantil añadido con éxito.");
             // Se cierra la sesión
             session.close();
 
@@ -744,17 +960,73 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
 
         // Declaración de campos de la tabla Guarderia
         // Iniciación de variables vinculadas a los campos de texto de la interfaz
-        String codigo = cdagTextField.getText();
-        String nombre = nmgTextField.getText();
-        Integer capacidad = Integer.parseInt(cpgTextField.getText());
-        Float presupuesto = Float.parseFloat(ppgTextField.getText());
-
+        String codigo = cdagTextField.getText().toUpperCase();
+        String nombre = nmgTextField.getText().toUpperCase();
+        Integer capacidad = null;
+        Float presupuesto = null;
+        
+        
+        //Validación de datos de entrada en campos de texto
+        // Código guardería
+        while (!validarTexto(codigo,5) || codigo==null) {
+            codigo = JOptionPane.showInputDialog(
+                    this,
+                    "Existe un error --> Código de guardería: introduce un código tipo de dato varchar, máximo 5 caracteres.",
+                    "Solicitud del código",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+        }
+        cdagTextField.setText(codigo.toUpperCase());
+        
+        // Nombre guardería
+        while (!validarTexto(nombre,40)) {
+            nombre = JOptionPane.showInputDialog(
+                    this,
+                    "Existe un error --> Nombre de guardería: introduce un nombre tipo de dato varchar, máximo 40 caracteres.",
+                    "Solicitud del nombre",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+        }
+        nmgTextField.setText(nombre.toUpperCase());
+        
+        // Capacidad guardería
+        try {
+            capacidad = Integer.parseInt(cpgTextField.getText());
+        } catch (NumberFormatException e) {
+            String capacidadGuarderia = String.valueOf(capacidad);
+            while (!validarEntero(capacidadGuarderia)) {
+                capacidadGuarderia = JOptionPane.showInputDialog(
+                        this,
+                        "Existe un error --> Capacidad de guardería: introduce un valor tipo de dato integer (número entero).",
+                        "Solicitud de la capacidad",
+                        JOptionPane.QUESTION_MESSAGE
+                );
+            }
+            cpgTextField.setText(capacidadGuarderia);
+        }
+       // Presupuesto guardería
+       
+       try{
+           presupuesto = Float.parseFloat(ppgTextField.getText());
+       } catch (NumberFormatException e){
+       String presuGuarderia=String.valueOf(presupuesto);
+        while (!validarNumeroDosDecimales(presuGuarderia)) {
+            presuGuarderia = JOptionPane.showInputDialog(
+                    this,
+                    "Existe un error --> Presupuesto de guardería: introduce un valor tipo de dato float (número decimal).",
+                    "Solicitud del presupuesto",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+        }
+        ppgTextField.setText(presuGuarderia);
+        
+       }
         // Se inicia una sesión
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
             agregarGuarderia(session, codigo, nombre, capacidad, presupuesto);
-
+jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
             // Se cierra la sesión
             session.close();
 
@@ -762,6 +1034,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
         refrescarComboBoxGuarderiasUnicas();
+        refrescarComboBoxNombreGuarderias();
         jComboBoxGuarderias.setSelectedIndex(0);
     }//GEN-LAST:event_agregarGuarderiaButtonActionPerformed
 
@@ -806,7 +1079,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             consultarGuarderia(session);
             jLabelListadoGuarderias.setText(etiquetaListadoGuarderias);
             System.out.print(listadoGuarderias);
-             JOptionPane.showMessageDialog(null, listadoGuarderias);
+            JOptionPane.showMessageDialog(null, listadoGuarderias);
             // Se cierra la sesión
             session.close();
 
@@ -824,14 +1097,14 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         String nombreGuarderia;
         item = jComboBoxNombreGuarderia.getSelectedIndex();
         nombreGuarderia = jComboBoxNombreGuarderia.getItemAt(item);
-        
+
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
-            consultarEducadoresEJ4(session,nombreGuarderia);
+            consultarEducadoresEJ4(session, nombreGuarderia);
             jLabelListadoEducadores.setText(etiquetaListadoEducadores);
             System.out.print(listadoEducadores);
-             JOptionPane.showMessageDialog(null, listadoEducadores);
+            JOptionPane.showMessageDialog(null, listadoEducadores);
             // Se cierra la sesión
             session.close();
 
@@ -843,15 +1116,34 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     private void listarEducadoresSalarioLimiteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarEducadoresSalarioLimiteButtonActionPerformed
         // TODO add your handling code here:
         // Se inicia una sesión
-        Float salarioLimite = Float.parseFloat(salarioLimiteTextField.getText());
+        Float salarioLimite = null;
+        
+        
+        
+        try{
+        salarioLimite = Float.parseFloat(salarioLimiteTextField.getText());
+        }catch (NumberFormatException e){
+        
+         // Salario educador
+       String nominaEducador=String.valueOf(salarioLimite);
+        while (!validarNumeroDosDecimales(nominaEducador)) {
+            nominaEducador = JOptionPane.showInputDialog(
+                    this,
+                    "Existe un error --> Salario límite del educador: introduce un valor tipo de dato float (número decimal).",
+                    "Solicitud del salario límite",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+        }
+        salarioLimiteTextField.setText(nominaEducador);
+        }
         
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
-            consultarEducadoresEJ5(session,salarioLimite);
+            consultarEducadoresEJ5(session, salarioLimite);
             jLabelListadoEducadoresSalarioLimite.setText(etiquetaListadoEducadoresSalarioLimite);
             System.out.print(listadoEducadoresSalarioLimite);
-             JOptionPane.showMessageDialog(null, listadoEducadoresSalarioLimite);
+            JOptionPane.showMessageDialog(null, listadoEducadoresSalarioLimite);
             // Se cierra la sesión
             session.close();
 
@@ -859,6 +1151,56 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_listarEducadoresSalarioLimiteButtonActionPerformed
+
+    private void actualizarSueldoEducadorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarSueldoEducadorButtonActionPerformed
+        // TODO add your handling code here:
+        // Iniciación de variables vinculadas a los campos de texto de la interfaz
+
+        Float nuevoSalario = null;
+        
+        
+        
+        try{
+        nuevoSalario = Float.parseFloat(nuevoSueldoTextField.getText());
+        
+        } catch (NumberFormatException e){
+            // Salario educador
+       String nominaEducador=String.valueOf(nuevoSalario);
+        while (!validarNumeroDosDecimales(nominaEducador)) {
+            nominaEducador = JOptionPane.showInputDialog(
+                    this,
+                    "Existe un error --> Salario nuevo del educador: introduce un valor tipo de dato float (número decimal).",
+                    "Solicitud del salario nuevo",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+        }
+        nuevoSueldoTextField.setText(nominaEducador);
+        }
+        
+        int item;
+        String dniEducador;
+        item = jComboBoxEducadoresSueldo.getSelectedIndex();
+        dniEducador = jComboBoxEducadoresSueldo.getItemAt(item);
+
+        // Se inicia una sesión
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
+            actualizarSalario(session, dniEducador, nuevoSalario);
+            jLabelActualizarSalarioEducador.setText(etiquetaSueldoActualizado);
+            // Se cierra la sesión
+            session.close();
+
+        } catch (HibernateException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }//GEN-LAST:event_actualizarSueldoEducadorButtonActionPerformed
+
+    private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_salirButtonActionPerformed
 
     static void agregarGuarderia(Session ss, String codigo, String nombre, Integer capacidad, Float presupuesto) {
 
@@ -1026,20 +1368,26 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         StringBuilder sb = new StringBuilder();
         StringBuilder sbHTML = new StringBuilder("<html>");
         String texto;
-        
+
         try {
             Query<Guarderia> query = ss.createQuery("from Guarderia g", Guarderia.class);
             guarderias = query.list();
 
+            if (!guarderias.isEmpty()){
             for (Guarderia guarde : guarderias) {
-                texto="Guardería: " + guarde.getNombre() + " --Código: " + guarde.getCodigo() + " --Capacidad: " + guarde.getCapacidad() + " --Presupuesto: " + guarde.getPresupuesto();
+                texto = "Guardería: " + guarde.getNombre() + " --Código: " + guarde.getCodigo() + " --Capacidad: " + guarde.getCapacidad() + " --Presupuesto: " + guarde.getPresupuesto();
                 System.out.println(texto);
                 sb.append(texto).append("\n");
                 sbHTML.append(texto).append("<br>");
             }
             sbHTML.append("</html>");
-                listadoGuarderias=sb.toString();
-                etiquetaListadoGuarderias=sbHTML.toString();
+            listadoGuarderias = sb.toString();
+            etiquetaListadoGuarderias = sbHTML.toString();
+            } else{
+                texto="No existen guarderías que listar";
+                listadoGuarderias = texto;
+            etiquetaListadoGuarderias = texto;
+            }
             // Se confirma la transacción
             tst.commit();
 
@@ -1049,30 +1397,36 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
 
         return guarderias;
     }
-    
-    static List<EducadorInfantil> consultarEducadoresEJ4(Session ss,String nombreGuarderia) {
+
+    static List<EducadorInfantil> consultarEducadoresEJ4(Session ss, String nombreGuarderia) {
 
         Transaction tst = ss.beginTransaction();
         List<EducadorInfantil> educadores = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         StringBuilder sbHTML = new StringBuilder("<html>");
         String texto;
-        
+
         try {
-            
+
             Query<EducadorInfantil> query = ss.createQuery("from EducadorInfantil e where codigoGuarderia.nombre = :nomGuarde order by e.apellidos asc", EducadorInfantil.class);
             query.setParameter("nomGuarde", nombreGuarderia);
             educadores = query.list();
 
+            if (!educadores.isEmpty()){
             for (EducadorInfantil educador : educadores) {
-                texto="Educador infantil: " + educador.getApellidos() + ", "+educador.getNombre()+ " --DNI: " + educador.getDni()+ "--Salario: " + educador.getSalario();
+                texto = "Educador infantil: " + educador.getApellidos() + ", " + educador.getNombre() + " --DNI: " + educador.getDni() + "--Salario: " + educador.getSalario();
                 System.out.println(texto);
                 sb.append(texto).append("\n");
                 sbHTML.append(texto).append("<br>");
             }
             sbHTML.append("</html>");
-                listadoEducadores=sb.toString();
-                etiquetaListadoEducadores=sbHTML.toString();
+            listadoEducadores = sb.toString();
+            etiquetaListadoEducadores = sbHTML.toString();
+            } else{
+                texto="No existen educadores que listar";
+            listadoEducadores = texto;
+            etiquetaListadoEducadores = texto;
+            }
             // Se confirma la transacción
             tst.commit();
 
@@ -1082,31 +1436,36 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
 
         return educadores;
     }
-    
-    
-    static List<EducadorInfantil> consultarEducadoresEJ5(Session ss,Float salarioLimite) {
+
+    static List<EducadorInfantil> consultarEducadoresEJ5(Session ss, Float salarioLimite) {
 
         Transaction tst = ss.beginTransaction();
         List<EducadorInfantil> educadores = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         StringBuilder sbHTML = new StringBuilder("<html>");
         String texto;
-        
+
         try {
-            
+
             Query<EducadorInfantil> query = ss.createQuery("from EducadorInfantil e where salario > :sueldoLimite order by e.salario desc", EducadorInfantil.class);
             query.setParameter("sueldoLimite", salarioLimite);
             educadores = query.list();
 
+            if (!educadores.isEmpty()){
             for (EducadorInfantil educador : educadores) {
-                texto="Educador infantil: " + educador.getApellidos() + ", "+educador.getNombre()+ " --DNI: " + educador.getDni()+ "--Salario: " + educador.getSalario();
+                texto = "Educador infantil: " + educador.getApellidos() + ", " + educador.getNombre() + " --DNI: " + educador.getDni() + "--Salario: " + educador.getSalario();
                 System.out.println(texto);
                 sb.append(texto).append("\n");
                 sbHTML.append(texto).append("<br>");
             }
             sbHTML.append("</html>");
-                listadoEducadoresSalarioLimite=sb.toString();
-                etiquetaListadoEducadoresSalarioLimite=sbHTML.toString();
+            listadoEducadoresSalarioLimite = sb.toString();
+            etiquetaListadoEducadoresSalarioLimite = sbHTML.toString();
+            } else{
+                texto="No existen educadores que listar";
+                listadoEducadoresSalarioLimite = texto;
+            etiquetaListadoEducadoresSalarioLimite = texto;
+            }
             // Se confirma la transacción
             tst.commit();
 
@@ -1115,6 +1474,37 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         }
 
         return educadores;
+    }
+
+    static void actualizarSalario(Session ss, String dni, Float nuevoSalario) {
+
+        Transaction tst = ss.beginTransaction();
+
+        try {
+
+            EducadorInfantil educador = ss.get(EducadorInfantil.class, dni);
+
+            if (educador == null) {
+                System.out.println("No se encontró el educador con DNI: " + dni);
+            } else {
+                // Actualizar guardería
+                educador.setSalario(nuevoSalario);
+                ss.update(educador);
+                System.out.println("Se actualizó el sueldo del educador con DNI: " + dni);
+                etiquetaSueldoActualizado = "El sueldo del educador " + educador.getNombre() + " " + educador.getApellidos() + " se ha actualizado con éxito";
+            }
+
+            // Se confirma la transacción
+            tst.commit();
+
+        } catch (Exception e) {
+
+            if (tst != null) {
+                // Hacer rollback en caso de error
+                tst.rollback();
+            }
+            System.out.println(e.getMessage());
+        }
     }
 
     static List<String> dniValoresUnicosEducadores(Session ss) {
@@ -1163,12 +1553,14 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
 
     private void refrescarComboBoxEducadoresUnicos() {
 
-         jComboBoxEducadores.removeAllItems();
+        jComboBoxEducadores.removeAllItems();
+        jComboBoxEducadoresSueldo.removeAllItems();
 // Se alimenta el combobox de educadores (valores únicos)
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             for (String dni : dniValoresUnicosEducadores(session)) {
                 jComboBoxEducadores.addItem(dni);
+                jComboBoxEducadoresSueldo.addItem(dni);
             }
             session.close();
 
@@ -1192,8 +1584,8 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }
-    
-        private void refrescarComboBoxNombreGuarderias() {
+
+    private void refrescarComboBoxNombreGuarderias() {
 
         jComboBoxNombreGuarderia.removeAllItems();
         // Se alimenta el combobox de educadores (valores únicos)
@@ -1271,7 +1663,90 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         });
     }
 
+        /**
+     * El método validarCodigoAlfanumerico comprueba si el String aportado como
+     * argumento cumple con una determinada expresión regular, el código debe
+     * ser alfanumérico y admite hasta un máximo de 10 caracteres.
+     *
+     * @param texto String a comprobar si comple con el patrón alfanumérico
+     * @return Booleano indicando true si se establece match con el texto pasado
+     * como argumento
+     */
+    public boolean validarCodigoAlfanumerico(String texto) {
+
+        // Definir la Expresión Regular del código alfanumérico, entre uno y diez caracteres
+        String regex = "^[a-zA-Z0-9]{1,10}$";
+
+        return texto.matches(regex);
+    }
+
+    /**
+     * El método validarNombre comprueba si el String aportado como argumento
+     * cumple con una determinada expresión regular, en este caso admite
+     * cualqueir caracter pero hasta un máximo de 50 caracteres.
+     *
+     * @param texto String a comprobar si comple con el patrón máximo 50
+     * caracteres
+     * @param numCaracteres Número entero para indicar el máximo de caracteres
+     * @return Booleano indicando true si se establece match con el texto pasado
+     * como argumento
+     */
+    public boolean validarTexto(String texto, int numCaracteres) {
+
+        // Definir la Expresión Regular para chequear el nombre del artículo, texto, entre uno y un máximo de 50 caracteres
+        String regex = String.format("^.{1,%d}$", numCaracteres);
+
+        return texto.matches(regex);
+    }
+
+    /**
+     * El método validarNumeroDosDecimales comprueba si el String aportado como
+     * argumento cumple con una determinada expresión regular, en este caso
+     * admite cualquier digito, pero es obligatorio que contenga dos decimales.
+     *
+     * @param texto String a comprobar si cumple con el patrón número con dos
+     * decimales
+     * @return Booleano indicando true si se establece match con el texto pasado
+     * como argumento
+     */
+    public boolean validarNumeroDosDecimales(String texto) {
+
+        // Expresión regular que admite números con dos decimales, punto como separador decimal
+        String regex = "^\\d+\\.\\d{2}$";
+
+            return texto.matches(regex);
+    }
+
+    // Método para valirada fechas formato dd/mm/aaaa
+    public boolean validarFormatoFecha(String texto) {
+    // Expresión regular para dd/mm/aaaa
+    // \d{2} espera dos dígitos, \/ la barra, y \d{4} el año
+    String regex = "^\\d{2}/\\d{2}/\\d{4}$";
+
+    return texto.matches(regex);
+}
+    
+    /**
+     * El método validarEntero comprueba si el String aportado como argumento
+     * cumple con una determinada expresión regular, en este caso admite
+     * cualquier digito tal que el número resultante sea un entero (sin
+     * decimales).
+     *
+     * @param texto String a comprobar si cumple con el patrón número entero
+     * incluyendo el cero
+     * @return Booleano indicando true si se establece match con el texto pasado
+     * como argumento
+     */
+    public boolean validarEntero(String texto) {
+
+        // Definir la Expresión Regular para chequear el nombre del artículo, texto, máximo 50 caracteres
+        String regex = "^\\d+$";
+
+        return texto.matches(regex);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizarSueldoEducadorButton;
     private javax.swing.JButton agregarEducadorButton;
     private javax.swing.JButton agregarGuarderiaButton;
     private javax.swing.JTextField apeTextField;
@@ -1284,6 +1759,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     private javax.swing.JTextField faeTextField;
     private javax.swing.JTextField fneTextField;
     private javax.swing.JComboBox<String> jComboBoxEducadores;
+    private javax.swing.JComboBox<String> jComboBoxEducadoresSueldo;
     private javax.swing.JComboBox<String> jComboBoxGuarderias;
     private javax.swing.JComboBox<String> jComboBoxNombreGuarderia;
     private javax.swing.JLabel jLabel1;
@@ -1302,6 +1778,9 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1309,6 +1788,9 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelActualizarSalarioEducador;
+    private javax.swing.JLabel jLabelAgregarEducador;
+    private javax.swing.JLabel jLabelAgregarGuardería;
     private javax.swing.JLabel jLabelBorrarEducador;
     private javax.swing.JLabel jLabelBorrarGuarderia;
     private javax.swing.JLabel jLabelListadoEducadores;
@@ -1320,6 +1802,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelAgregarEducador;
     private javax.swing.JPanel jPanelAgregarGuarderia;
     private javax.swing.JPanel jPanelEliminarEducador;
+    private javax.swing.JPanel jPanelEliminarEducador1;
     private javax.swing.JPanel jPanelEliminarGuarderia;
     private javax.swing.JButton limpiarAgregarEducadorButton;
     private javax.swing.JButton limpiarAgregarGuarderiaButton;
@@ -1328,8 +1811,10 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     private javax.swing.JButton listarGuarderiaButton;
     private javax.swing.JTextField nmeTextField;
     private javax.swing.JTextField nmgTextField;
+    private javax.swing.JTextField nuevoSueldoTextField;
     private javax.swing.JTextField ppgTextField;
     private javax.swing.JTextField salarioLimiteTextField;
+    private javax.swing.JButton salirButton;
     private javax.swing.JTextField sleTextField;
     // End of variables declaration//GEN-END:variables
 }
