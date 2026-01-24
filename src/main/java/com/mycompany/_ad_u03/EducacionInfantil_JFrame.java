@@ -33,6 +33,8 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     static String etiquetaListadoGuarderias;
     static String listadoEducadores;
     static String etiquetaListadoEducadores;
+    static String listadoEducadoresSalarioLimite;
+    static String etiquetaListadoEducadoresSalarioLimite;
 
     /**
      * Creates new form EducacionInfantil_JFrame
@@ -112,6 +114,12 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         listarEducadoresButton = new javax.swing.JButton();
         jLabelListadoEducadores = new javax.swing.JLabel();
         jComboBoxNombreGuarderia = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        listarEducadoresSalarioLimiteButton = new javax.swing.JButton();
+        jLabelListadoEducadoresSalarioLimite = new javax.swing.JLabel();
+        salarioLimiteTextField = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -522,7 +530,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                         .addComponent(jLabel21)
                         .addGap(41, 41, 41)
                         .addComponent(jComboBoxNombreGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addComponent(listarEducadoresButton)))
                 .addGap(19, 19, 19))
         );
@@ -536,6 +544,58 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                     .addComponent(jComboBoxNombreGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelListadoEducadores, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel22.setText("5) Listar Educadores");
+        jLabel22.setToolTipText("");
+
+        listarEducadoresSalarioLimiteButton.setText("Listar");
+        listarEducadoresSalarioLimiteButton.setToolTipText("Listar todas las guarderías");
+        listarEducadoresSalarioLimiteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarEducadoresSalarioLimiteButtonActionPerformed(evt);
+            }
+        });
+
+        jLabelListadoEducadoresSalarioLimite.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelListadoEducadoresSalarioLimite.setText("Listado de educadores");
+        jLabelListadoEducadoresSalarioLimite.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        salarioLimiteTextField.setToolTipText("Tipo de dato float");
+
+        jLabel23.setText("Salario mayor que");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelListadoEducadoresSalarioLimite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel23)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(salarioLimiteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(listarEducadoresSalarioLimiteButton)))
+                .addGap(19, 19, 19))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(listarEducadoresSalarioLimiteButton)
+                    .addComponent(salarioLimiteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelListadoEducadoresSalarioLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -546,6 +606,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -588,12 +649,14 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(327, 327, 327)
                     .addComponent(jLabel20)
-                    .addContainerGap(558, Short.MAX_VALUE)))
+                    .addContainerGap(644, Short.MAX_VALUE)))
         );
 
         pack();
@@ -765,7 +828,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
-            consultarEducadores(session,nombreGuarderia);
+            consultarEducadoresEJ4(session,nombreGuarderia);
             jLabelListadoEducadores.setText(etiquetaListadoEducadores);
             System.out.print(listadoEducadores);
              JOptionPane.showMessageDialog(null, listadoEducadores);
@@ -776,6 +839,26 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_listarEducadoresButtonActionPerformed
+
+    private void listarEducadoresSalarioLimiteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarEducadoresSalarioLimiteButtonActionPerformed
+        // TODO add your handling code here:
+        // Se inicia una sesión
+        Float salarioLimite = Float.parseFloat(salarioLimiteTextField.getText());
+        
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
+            consultarEducadoresEJ5(session,salarioLimite);
+            jLabelListadoEducadoresSalarioLimite.setText(etiquetaListadoEducadoresSalarioLimite);
+            System.out.print(listadoEducadoresSalarioLimite);
+             JOptionPane.showMessageDialog(null, listadoEducadoresSalarioLimite);
+            // Se cierra la sesión
+            session.close();
+
+        } catch (HibernateException e) {
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_listarEducadoresSalarioLimiteButtonActionPerformed
 
     static void agregarGuarderia(Session ss, String codigo, String nombre, Integer capacidad, Float presupuesto) {
 
@@ -967,7 +1050,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         return guarderias;
     }
     
-    static List<EducadorInfantil> consultarEducadores(Session ss,String nombreGuarderia) {
+    static List<EducadorInfantil> consultarEducadoresEJ4(Session ss,String nombreGuarderia) {
 
         Transaction tst = ss.beginTransaction();
         List<EducadorInfantil> educadores = new ArrayList<>();
@@ -977,12 +1060,12 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         
         try {
             
-            Query<EducadorInfantil> query = ss.createQuery("from EducadorInfantil e where codigoGuarderia.nombre=:nomGuarde order by e.apellidos asc", EducadorInfantil.class);
+            Query<EducadorInfantil> query = ss.createQuery("from EducadorInfantil e where codigoGuarderia.nombre = :nomGuarde order by e.apellidos asc", EducadorInfantil.class);
             query.setParameter("nomGuarde", nombreGuarderia);
             educadores = query.list();
 
             for (EducadorInfantil educador : educadores) {
-                texto="Educador infantil: " + educador.getApellidos() + ", "+educador.getNombre()+ " --DNI: " + educador.getDni();
+                texto="Educador infantil: " + educador.getApellidos() + ", "+educador.getNombre()+ " --DNI: " + educador.getDni()+ "--Salario: " + educador.getSalario();
                 System.out.println(texto);
                 sb.append(texto).append("\n");
                 sbHTML.append(texto).append("<br>");
@@ -990,6 +1073,40 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             sbHTML.append("</html>");
                 listadoEducadores=sb.toString();
                 etiquetaListadoEducadores=sbHTML.toString();
+            // Se confirma la transacción
+            tst.commit();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return educadores;
+    }
+    
+    
+    static List<EducadorInfantil> consultarEducadoresEJ5(Session ss,Float salarioLimite) {
+
+        Transaction tst = ss.beginTransaction();
+        List<EducadorInfantil> educadores = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sbHTML = new StringBuilder("<html>");
+        String texto;
+        
+        try {
+            
+            Query<EducadorInfantil> query = ss.createQuery("from EducadorInfantil e where salario > :sueldoLimite order by e.salario desc", EducadorInfantil.class);
+            query.setParameter("sueldoLimite", salarioLimite);
+            educadores = query.list();
+
+            for (EducadorInfantil educador : educadores) {
+                texto="Educador infantil: " + educador.getApellidos() + ", "+educador.getNombre()+ " --DNI: " + educador.getDni()+ "--Salario: " + educador.getSalario();
+                System.out.println(texto);
+                sb.append(texto).append("\n");
+                sbHTML.append(texto).append("<br>");
+            }
+            sbHTML.append("</html>");
+                listadoEducadoresSalarioLimite=sb.toString();
+                etiquetaListadoEducadoresSalarioLimite=sbHTML.toString();
             // Se confirma la transacción
             tst.commit();
 
@@ -1183,6 +1300,8 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1193,9 +1312,11 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelBorrarEducador;
     private javax.swing.JLabel jLabelBorrarGuarderia;
     private javax.swing.JLabel jLabelListadoEducadores;
+    private javax.swing.JLabel jLabelListadoEducadoresSalarioLimite;
     private javax.swing.JLabel jLabelListadoGuarderias;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelAgregarEducador;
     private javax.swing.JPanel jPanelAgregarGuarderia;
     private javax.swing.JPanel jPanelEliminarEducador;
@@ -1203,10 +1324,12 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     private javax.swing.JButton limpiarAgregarEducadorButton;
     private javax.swing.JButton limpiarAgregarGuarderiaButton;
     private javax.swing.JButton listarEducadoresButton;
+    private javax.swing.JButton listarEducadoresSalarioLimiteButton;
     private javax.swing.JButton listarGuarderiaButton;
     private javax.swing.JTextField nmeTextField;
     private javax.swing.JTextField nmgTextField;
     private javax.swing.JTextField ppgTextField;
+    private javax.swing.JTextField salarioLimiteTextField;
     private javax.swing.JTextField sleTextField;
     // End of variables declaration//GEN-END:variables
 }
