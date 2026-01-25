@@ -22,11 +22,19 @@ import javax.swing.JTextField;
 import org.hibernate.Query;
 
 /**
+ * Ventana principal para la gestión de Centros de Educación Infantil.
+ * <p>
+ * Esta interfaz permite realizar operaciones CRUD sobre educadores y guarderías
+ * utilizando Hibernate como ORM para la persistencia de datos.
+ * </p>
  *
- * @author anaranjo
+ * @author Antonio Naranjo Castillo
+ * @version 1.0 (Curso 25/26)
+ * @see javax.swing.JFrame
  */
 public class EducacionInfantil_JFrame extends javax.swing.JFrame {
 
+    // Variables estáticas de la clase
     static String etiquetaEducadorBorrado;
     static String etiquetaGuarderiaBorrada;
     static String listadoGuarderias;
@@ -38,7 +46,12 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
     static String etiquetaSueldoActualizado;
 
     /**
-     * Creates new form EducacionInfantil_JFrame
+     * Inicializa una nueva instancia de la interfaz gráfica.
+     * <p>
+     * Configura los componentes de Swing, centra la ventana en pantalla,
+     * establece el título personalizado y carga los datos iniciales de la base
+     * de datos en los ComboBox de la interfaz.
+     * </p>
      */
     public EducacionInfantil_JFrame() {
         initComponents();
@@ -47,13 +60,13 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         // Título de la ventana
         this.setTitle("Gestión de Centros de Educación Infantil - Autor: Antonio Naranjo Castillo - DAM curso 25/26");
 
+        // Se refrescan los items de los ComboBox
         refrescarComboBoxEducadoresUnicos();
         refrescarComboBoxGuarderiasUnicas();
         refrescarComboBoxNombreGuarderias();
 
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -792,6 +805,13 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Gestiona el evento de clic para añadir un nuevo educador. Recoge los
+     * datos de los campos de texto, los valida y llama al método de
+     * persistencia para guardar el objeto en la base de datos.
+     *
+     * @param evt Evento de acción.
+     */
     private void agregarEducadorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarEducadorButtonActionPerformed
         // TODO add your handling code here:
 
@@ -807,12 +827,16 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaNacimiento = null;
         Date fechaAlta = null;
+
         Float salario = null;
+
+        //Validación de datos de entrada en campos de texto
+        // Salario educador
         try {
             salario = Float.parseFloat(sleTextField.getText());
         } catch (NumberFormatException e) {
             // Salario educador
-            String nominaEducador= String.valueOf(salario);
+            String nominaEducador = String.valueOf(salario);
             while (!validarNumeroDosDecimales(nominaEducador)) {
                 nominaEducador = JOptionPane.showInputDialog(
                         this,
@@ -822,10 +846,11 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                 );
             }
             sleTextField.setText(nominaEducador);
+            salario = Float.parseFloat(nominaEducador);
         }
-        //Validación de datos de entrada en campos de texto
+
         // DNI educador
-        while (!validarTexto(dni,9) || dni==null) {
+        while (!validarTexto(dni, 9) || dni == null) {
             dni = JOptionPane.showInputDialog(
                     this,
                     "Existe un error --> DNI del educador: introduce un DNI tipo de dato varchar, máximo 9 caracteres.",
@@ -834,9 +859,9 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             );
         }
         dniaTextField.setText(dni.toUpperCase());
-        
+
         // Nombre educador
-        while (!validarTexto(nombre,30)) {
+        while (!validarTexto(nombre, 30)) {
             nombre = JOptionPane.showInputDialog(
                     this,
                     "Existe un error --> Nombre del educador: introduce un nombre tipo de dato varchar, máximo 30 caracteres.",
@@ -845,9 +870,9 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             );
         }
         nmeTextField.setText(nombre.toUpperCase());
-        
+
         // Apellidos educador
-        while (!validarTexto(apellidos,70)) {
+        while (!validarTexto(apellidos, 70)) {
             apellidos = JOptionPane.showInputDialog(
                     this,
                     "Existe un error --> Apellidos del educador: introduce un nombre tipo de dato varchar, máximo 70 caracteres.",
@@ -856,10 +881,9 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             );
         }
         apeTextField.setText(apellidos.toUpperCase());
-        
-        
+
         // Código guardería
-        while (!validarTexto(codigoGuarde,5) || codigoGuarde==null) {
+        while (!validarTexto(codigoGuarde, 5) || codigoGuarde == null) {
             codigoGuarde = JOptionPane.showInputDialog(
                     this,
                     "Existe un error --> Código de guardería: introduce un código tipo de dato varchar, máximo 5 caracteres.",
@@ -868,55 +892,63 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             );
         }
         cgeTextField.setText(codigoGuarde.toUpperCase());
-  
-        
-         // Fechas
-         try {
+
+        // Fechas
+        try {
             fechaNacimiento = formato.parse(fechaNac);
             fechaAlta = formato.parse(fechaAlt);
         } catch (ParseException ex) {
             Logger.getLogger(EducacionInfantil_JFrame.class.getName()).log(Level.SEVERE, null, ex);
-            
-        while (!validarFormatoFecha(fechaNac)) {
-            fechaNac = JOptionPane.showInputDialog(
-                    this,
-                    "Existe un error --> Fecha de nacimiento: introduce un valor formato fecha dd/mm/aaaa.",
-                    "Solicitud de la fecha de nacimiento",
-                    JOptionPane.QUESTION_MESSAGE
-            );
-        }
-        fneTextField.setText(fechaNac);
-        
-        while (!validarFormatoFecha(fechaAlt)) {
-            fechaAlt = JOptionPane.showInputDialog(
-                    this,
-                    "Existe un error --> Fecha de alta: introduce un valor formato fecha dd/mm/aaaa.",
-                    "Solicitud de la fecha de alta",
-                    JOptionPane.QUESTION_MESSAGE
-            );
-        }
-        faeTextField.setText(fechaAlt);
-            
-            
-        }
-        
 
-        // Se inicia una sesión
+            while (!validarFormatoFecha(fechaNac)) {
+                fechaNac = JOptionPane.showInputDialog(
+                        this,
+                        "Existe un error --> Fecha de nacimiento: introduce un valor formato fecha dd/mm/aaaa.",
+                        "Solicitud de la fecha de nacimiento",
+                        JOptionPane.QUESTION_MESSAGE
+                );
+            }
+            fneTextField.setText(fechaNac);
+
+            while (!validarFormatoFecha(fechaAlt)) {
+                fechaAlt = JOptionPane.showInputDialog(
+                        this,
+                        "Existe un error --> Fecha de alta: introduce un valor formato fecha dd/mm/aaaa.",
+                        "Solicitud de la fecha de alta",
+                        JOptionPane.QUESTION_MESSAGE
+                );
+            }
+            faeTextField.setText(fechaAlt);
+
+        }
+
+        // Se inicia un bloque de control de errores para manejar fallos en la base de datos
         try {
+            // Solicita a la factoría una nueva sesión de trabajo con la base de datos
             Session session = HibernateUtil.getSessionFactory().openSession();
             // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
+            // Ejecuta la lógica de guardado pasando los datos del formulario y la sesión activa
             agregarEducador(session, dni, nombre, apellidos, fechaNacimiento, fechaAlta, salario, guarde);
+            // Informa visualmente al usuario en la interfaz que la operación fue correcta
             jLabelAgregarEducador.setText("Educador infantil añadido con éxito.");
-            // Se cierra la sesión
+            // Libera los recursos y finaliza la conexión actual de Hibernate
             session.close();
 
+            // Captura cualquier excepción específica de Hibernate que haya ocurrido en el proceso
         } catch (HibernateException e) {
             System.out.println(e.getMessage());
         }
+        // Se refrescan los combobox con la documentación actualizada apuntando al primer elemento
         refrescarComboBoxEducadoresUnicos();
         jComboBoxEducadores.setSelectedIndex(0);
     }//GEN-LAST:event_agregarEducadorButtonActionPerformed
 
+    /**
+     * Gestiona la eliminación de una guardería seleccionada. Obtiene el código
+     * del ComboBox de eliminación y ejecuta el borrado mediante Hibernate.
+     *
+     * @param evt Evento de acción.
+     */
     private void eliminarGuarderiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarGuarderiaButtonActionPerformed
         // TODO add your handling code here:
 
@@ -929,6 +961,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
 
         // Se inicia una sesión
         try {
+            // Solicita a la factoría una nueva sesión de trabajo con la base de datos
             Session session = HibernateUtil.getSessionFactory().openSession();
             // Se realiza una consulta para comprobar que no existan educadores asociados a la guardería que se pretende eliminar
             // Si la consulta está vacía entonces se procede a borrar la guardería, pero si no se muestra un mensaje al usuario de impedimento
@@ -939,22 +972,32 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Existen educadores asignados a la guardería: " + codigoGuarderia + ". La guardería no se puede borrar.");
             }
-
             // Se cierra la sesión
             session.close();
 
         } catch (HibernateException e) {
             System.out.println(e.getMessage());
         }
+        // Se refrescan los combobox 
         refrescarComboBoxGuarderiasUnicas();
         jComboBoxGuarderias.setSelectedIndex(0);
     }//GEN-LAST:event_eliminarGuarderiaButtonActionPerformed
 
+    /**
+     * Limpia todos los campos de texto del panel de añadir guarderías.
+     *
+     * @param evt Evento de acción.
+     */
     private void limpiarAgregarGuarderiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarAgregarGuarderiaButtonActionPerformed
         // TODO add your handling code here:
         limpiarCampos(jPanelAgregarGuarderia);
     }//GEN-LAST:event_limpiarAgregarGuarderiaButtonActionPerformed
 
+    /**
+     * Gestiona el evento para dar de alta una nueva guardería en el sistema.
+     *
+     * @param evt Evento de acción.
+     */
     private void agregarGuarderiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarGuarderiaButtonActionPerformed
         // TODO add your handling code here:
 
@@ -964,11 +1007,10 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
         String nombre = nmgTextField.getText().toUpperCase();
         Integer capacidad = null;
         Float presupuesto = null;
-        
-        
-        //Validación de datos de entrada en campos de texto
+
+        // Validación de datos de entrada en campos de texto
         // Código guardería
-        while (!validarTexto(codigo,5) || codigo==null) {
+        while (!validarTexto(codigo, 5) || codigo == null) {
             codigo = JOptionPane.showInputDialog(
                     this,
                     "Existe un error --> Código de guardería: introduce un código tipo de dato varchar, máximo 5 caracteres.",
@@ -977,9 +1019,9 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             );
         }
         cdagTextField.setText(codigo.toUpperCase());
-        
+
         // Nombre guardería
-        while (!validarTexto(nombre,40)) {
+        while (!validarTexto(nombre, 40)) {
             nombre = JOptionPane.showInputDialog(
                     this,
                     "Existe un error --> Nombre de guardería: introduce un nombre tipo de dato varchar, máximo 40 caracteres.",
@@ -988,7 +1030,7 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
             );
         }
         nmgTextField.setText(nombre.toUpperCase());
-        
+
         // Capacidad guardería
         try {
             capacidad = Integer.parseInt(cpgTextField.getText());
@@ -1003,46 +1045,63 @@ public class EducacionInfantil_JFrame extends javax.swing.JFrame {
                 );
             }
             cpgTextField.setText(capacidadGuarderia);
+            capacidad = Integer.parseInt(capacidadGuarderia);
         }
-       // Presupuesto guardería
-       
-       try{
-           presupuesto = Float.parseFloat(ppgTextField.getText());
-       } catch (NumberFormatException e){
-       String presuGuarderia=String.valueOf(presupuesto);
-        while (!validarNumeroDosDecimales(presuGuarderia)) {
-            presuGuarderia = JOptionPane.showInputDialog(
-                    this,
-                    "Existe un error --> Presupuesto de guardería: introduce un valor tipo de dato float (número decimal).",
-                    "Solicitud del presupuesto",
-                    JOptionPane.QUESTION_MESSAGE
-            );
+
+        // Presupuesto guardería
+        try {
+            presupuesto = Float.parseFloat(ppgTextField.getText());
+        } catch (NumberFormatException e) {
+            String presuGuarderia = String.valueOf(presupuesto);
+            while (!validarNumeroDosDecimales(presuGuarderia)) {
+                presuGuarderia = JOptionPane.showInputDialog(
+                        this,
+                        "Existe un error --> Presupuesto de guardería: introduce un valor tipo de dato float (número decimal).",
+                        "Solicitud del presupuesto",
+                        JOptionPane.QUESTION_MESSAGE
+                );
+            }
+            ppgTextField.setText(presuGuarderia);
+            presupuesto = Float.parseFloat(presuGuarderia);
+
         }
-        ppgTextField.setText(presuGuarderia);
-        
-       }
+
         // Se inicia una sesión
         try {
+            // Solicita a la factoría una nueva sesión de trabajo con la base de datos
             Session session = HibernateUtil.getSessionFactory().openSession();
             // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
             agregarGuarderia(session, codigo, nombre, capacidad, presupuesto);
-jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
+            // Informa visualmente al usuario en la interfaz
+            jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
             // Se cierra la sesión
             session.close();
 
+            // Captura cualquier excepción específica de Hibernate
         } catch (HibernateException e) {
             System.out.println(e.getMessage());
         }
+        // Se refrescan los combobox y se selecciona el primer item por defecto
         refrescarComboBoxGuarderiasUnicas();
         refrescarComboBoxNombreGuarderias();
         jComboBoxGuarderias.setSelectedIndex(0);
     }//GEN-LAST:event_agregarGuarderiaButtonActionPerformed
 
+    /**
+     * Restablece los campos de entrada del panel de añadir educadores.
+     *
+     * @param evt Evento de acción.
+     */
     private void limpiarAgregarEducadorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarAgregarEducadorButtonActionPerformed
         // TODO add your handling code here:
         limpiarCampos(jPanelAgregarEducador);
     }//GEN-LAST:event_limpiarAgregarEducadorButtonActionPerformed
 
+    /**
+     * Procesa la baja de un educador del sistema según el DNI seleccionado.
+     *
+     * @param evt Evento de acción.
+     */
     private void eliminarEducadorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEducadorButtonActionPerformed
         // TODO add your handling code here:
         // Declaración de campos de la tabla Guarderia
@@ -1053,30 +1112,39 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         dniEducador = jComboBoxEducadores.getItemAt(item).toUpperCase();
         // Se inicia una sesión
         try {
+            // Solicita a la factoría una nueva sesión
             Session session = HibernateUtil.getSessionFactory().openSession();
-            // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
+            // Se llama el método borrarEducador() para borrar un educador infantil de la base de datos
             borrarEducador(session, dniEducador);
-
+            // Informa visualmente al usuario
             jLabelBorrarEducador.setText(etiquetaEducadorBorrado);
-
             // Se cierra la sesión
             session.close();
 
         } catch (HibernateException e) {
             System.out.println(e.getMessage());
         }
+        // Se refrescan combobox
         refrescarComboBoxEducadoresUnicos();
         jComboBoxEducadores.setSelectedIndex(0);
     }//GEN-LAST:event_eliminarEducadorButtonActionPerformed
 
+    /**
+     * Recupera todas las guarderías de la base de datos y vuelca el listado en
+     * el área de texto correspondiente.
+     *
+     * @param evt Evento de acción.
+     */
     private void listarGuarderiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarGuarderiaButtonActionPerformed
         // TODO add your handling code here:
 
         // Se inicia una sesión
         try {
+            // Solicita a la factoría una nueva sesión
             Session session = HibernateUtil.getSessionFactory().openSession();
-            // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
+            // Se llama el método consultarGuarderia() para listar las guarderías de la base de datos
             consultarGuarderia(session);
+            // Informa visualmente al usuario
             jLabelListadoGuarderias.setText(etiquetaListadoGuarderias);
             System.out.print(listadoGuarderias);
             JOptionPane.showMessageDialog(null, listadoGuarderias);
@@ -1090,6 +1158,12 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
 
     }//GEN-LAST:event_listarGuarderiaButtonActionPerformed
 
+    /**
+     * Muestra el listado de educadores pertenecientes a la guardería
+     * seleccionada en el ComboBox del apartado 4.
+     *
+     * @param evt Evento de acción.
+     */
     private void listarEducadoresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarEducadoresButtonActionPerformed
         // TODO add your handling code here:
         // Se inicia una sesión
@@ -1099,9 +1173,11 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         nombreGuarderia = jComboBoxNombreGuarderia.getItemAt(item);
 
         try {
+            // Solicita a la factoría una nueva sesión
             Session session = HibernateUtil.getSessionFactory().openSession();
-            // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
-            consultarEducadoresEJ4(session, nombreGuarderia);
+            // Se llama el método consultarEducadoresEJ2D() para realizar la consulta solicitada
+            consultarEducadoresEJ2D(session, nombreGuarderia);
+            // Informa visualmente al usuario
             jLabelListadoEducadores.setText(etiquetaListadoEducadores);
             System.out.print(listadoEducadores);
             JOptionPane.showMessageDialog(null, listadoEducadores);
@@ -1113,34 +1189,41 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         }
     }//GEN-LAST:event_listarEducadoresButtonActionPerformed
 
+    /**
+     * Filtra y muestra los educadores cuyo salario supera el límite introducido
+     * por el usuario en el apartado 5.
+     *
+     * @param evt Evento de acción.
+     */
     private void listarEducadoresSalarioLimiteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarEducadoresSalarioLimiteButtonActionPerformed
         // TODO add your handling code here:
         // Se inicia una sesión
         Float salarioLimite = null;
-        
-        
-        
-        try{
-        salarioLimite = Float.parseFloat(salarioLimiteTextField.getText());
-        }catch (NumberFormatException e){
-        
-         // Salario educador
-       String nominaEducador=String.valueOf(salarioLimite);
-        while (!validarNumeroDosDecimales(nominaEducador)) {
-            nominaEducador = JOptionPane.showInputDialog(
-                    this,
-                    "Existe un error --> Salario límite del educador: introduce un valor tipo de dato float (número decimal).",
-                    "Solicitud del salario límite",
-                    JOptionPane.QUESTION_MESSAGE
-            );
-        }
-        salarioLimiteTextField.setText(nominaEducador);
-        }
-        
+
+        // Validación datos de entrada
         try {
+            salarioLimite = Float.parseFloat(salarioLimiteTextField.getText());
+        } catch (NumberFormatException e) {
+            // Salario educador
+            String nominaEducador = String.valueOf(salarioLimite);
+            while (!validarNumeroDosDecimales(nominaEducador)) {
+                nominaEducador = JOptionPane.showInputDialog(
+                        this,
+                        "Existe un error --> Salario límite del educador: introduce un valor tipo de dato float (número decimal).",
+                        "Solicitud del salario límite",
+                        JOptionPane.QUESTION_MESSAGE
+                );
+            }
+            salarioLimiteTextField.setText(nominaEducador);
+            salarioLimite=Float.parseFloat(nominaEducador);
+        }
+
+        try {
+            // Solicita a la factoría una nueva sesión
             Session session = HibernateUtil.getSessionFactory().openSession();
-            // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
-            consultarEducadoresEJ5(session, salarioLimite);
+            // Se llama el método consultarEducadoresEJ2E() para realizar la consulta solicitada
+            consultarEducadoresEJ2E(session, salarioLimite);
+            // Informa visualmente al usuario
             jLabelListadoEducadoresSalarioLimite.setText(etiquetaListadoEducadoresSalarioLimite);
             System.out.print(listadoEducadoresSalarioLimite);
             JOptionPane.showMessageDialog(null, listadoEducadoresSalarioLimite);
@@ -1152,31 +1235,38 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         }
     }//GEN-LAST:event_listarEducadoresSalarioLimiteButtonActionPerformed
 
+    /**
+     * Actualiza el salario de un educador específico utilizando el DNI y el
+     * nuevo importe proporcionado.
+     *
+     * @param evt Evento de acción.
+     */
     private void actualizarSueldoEducadorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarSueldoEducadorButtonActionPerformed
         // TODO add your handling code here:
         // Iniciación de variables vinculadas a los campos de texto de la interfaz
 
         Float nuevoSalario = null;
-        
-        
-        
-        try{
-        nuevoSalario = Float.parseFloat(nuevoSueldoTextField.getText());
-        
-        } catch (NumberFormatException e){
+
+        // Validación datos de entrada
+        // Nuevo salario
+        try {
+            nuevoSalario = Float.parseFloat(nuevoSueldoTextField.getText());
+        } catch (NumberFormatException e) {
             // Salario educador
-       String nominaEducador=String.valueOf(nuevoSalario);
-        while (!validarNumeroDosDecimales(nominaEducador)) {
-            nominaEducador = JOptionPane.showInputDialog(
-                    this,
-                    "Existe un error --> Salario nuevo del educador: introduce un valor tipo de dato float (número decimal).",
-                    "Solicitud del salario nuevo",
-                    JOptionPane.QUESTION_MESSAGE
-            );
+            String nominaEducador = String.valueOf(nuevoSalario);
+            while (!validarNumeroDosDecimales(nominaEducador)) {
+                nominaEducador = JOptionPane.showInputDialog(
+                        this,
+                        "Existe un error --> Salario nuevo del educador: introduce un valor tipo de dato float (número decimal).",
+                        "Solicitud del salario nuevo",
+                        JOptionPane.QUESTION_MESSAGE
+                );
+            }
+            nuevoSueldoTextField.setText(nominaEducador);
+            nuevoSalario = Float.parseFloat(nominaEducador);
         }
-        nuevoSueldoTextField.setText(nominaEducador);
-        }
-        
+
+        // Iniciación de variables
         int item;
         String dniEducador;
         item = jComboBoxEducadoresSueldo.getSelectedIndex();
@@ -1184,9 +1274,11 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
 
         // Se inicia una sesión
         try {
+            // Solicita a la factoría una nueva sesión
             Session session = HibernateUtil.getSessionFactory().openSession();
-            // Se llama el método agregarGuarderia() para añadir una guardería a la base de datos
+            // Se llama el método actualizarSalario() para actualizar el salario del educador
             actualizarSalario(session, dniEducador, nuevoSalario);
+            // Informa visualmente al usuario
             jLabelActualizarSalarioEducador.setText(etiquetaSueldoActualizado);
             // Se cierra la sesión
             session.close();
@@ -1197,30 +1289,49 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
 
     }//GEN-LAST:event_actualizarSueldoEducadorButtonActionPerformed
 
+    /**
+     * Cierra la conexión de Hibernate y finaliza la ejecución de la aplicación.
+     *
+     * @param evt Evento de acción.
+     */
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
         // TODO add your handling code here:
+        // Salida del aplicativo
         System.exit(0);
     }//GEN-LAST:event_salirButtonActionPerformed
 
+    /**
+     * Crea y persiste un objeto Guarderia en la base de datos.
+     *
+     * @param ss Sesión activa de Hibernate.
+     * @param codigo Identificador único.
+     * @param nombre Nombre del centro.
+     * @param capacidad Aforo máximo.
+     * @param presupuesto Presupuesto anual.
+     */
     static void agregarGuarderia(Session ss, String codigo, String nombre, Integer capacidad, Float presupuesto) {
 
-        // Se declara/instancia un objeto tipo Transaction
+        // Inicia una unidad de trabajo lógica para asegurar la integridad de los datos
         Transaction tst = ss.beginTransaction();
 
         try {
 
+            // Instancia el objeto 'Guarderia' usando el código como identificador (PK)
+            // Se establecen los atributos de una entidad Guardería
             Guarderia guarde = new Guarderia(codigo);
             guarde.setNombre(nombre);
             guarde.setCapacidad(capacidad);
             guarde.setPresupuesto(presupuesto);
+            // Pasa el objeto al estado persistente para que Hibernate lo gestione
             ss.save(guarde);
 
+            /// Confirma los cambios de forma definitiva en la base de datos MySQL
             tst.commit();
 
         } catch (ConstraintViolationException e) {
 
             if (tst != null) {
-                // Hacer rollback si hay un error
+                // Hacer rollback se revierte cualquier cambio pendiente para evitar datos corruptos o incompletos
                 tst.rollback();
             }
             System.out.println(e.getMessage());
@@ -1235,6 +1346,18 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         }
     }
 
+    /**
+     * Realiza la inserción de una entidad EducadorInfantil mediante Hibernate.
+     *
+     * @param ss Sesión activa de Hibernate.
+     * @param dni DNI del trabajador.
+     * @param nombre Nombre de pila.
+     * @param apellidos Apellidos del trabajador.
+     * @param fechaNacimiento Fecha de nacimiento.
+     * @param fechaAlta Fecha de incorporación.
+     * @param salario Sueldo bruto.
+     * @param codigoGuarderia Objeto Guarderia al que pertenece.
+     */
     static void agregarEducador(Session ss, String dni, String nombre, String apellidos, Date fechaNacimiento, Date fechaAlta, Float salario, Guarderia codigoGuarderia) {
 
         // Se declara/instancia un objeto tipo Transaction
@@ -1242,6 +1365,7 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
 
         try {
 
+            // Instancia el objeto 'EducadorInfantil' usando el código como identificador (PK)
             EducadorInfantil educador = new EducadorInfantil(dni);
             educador.setNombre(nombre);
             educador.setApellidos(apellidos);
@@ -1249,8 +1373,9 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
             educador.setFechaAlta(fechaAlta);
             educador.setSalario(salario);
             educador.setCodigoGuarderia(codigoGuarderia);
+            // Pasa el objeto al estado persistente
             ss.save(educador);
-
+            // Confirma los cambios de forma definitiva
             tst.commit();
 
         } catch (ConstraintViolationException e) {
@@ -1271,26 +1396,35 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         }
     }
 
+    /**
+     * Elimina un registro de guardería por su código.
+     *
+     * @param ss Sesión activa de Hibernate.
+     * @param codigo Código de la guardería a borrar.
+     */
     static void borrarGuarderia(Session ss, String codigo) {
 
+        // Inicia la transacción para asegurar que el borrado sea atómico y seguro
         Transaction tst = ss.beginTransaction();
 
         try {
 
+            // Intenta recuperar el objeto Guarderia de la BD usando su clase y la clave primaria
             Guarderia guarde = ss.get(Guarderia.class, codigo);
 
+            // Verifica si el objeto no existe
             if (guarde == null) {
                 System.out.println("No se encontró la guardería con código: " + codigo);
             } else {
 
-                // Se realiza una consulta
-                // Borrar guardería
+                // Ordena a Hibernate marcar el objeto persistente para su eliminación física
                 ss.delete(guarde);
                 System.out.println("Se borró la guardería con código: " + codigo);
+                // Almacena un mensaje de éxito con el nombre real de la guardería para la interfaz
                 etiquetaGuarderiaBorrada = "La guardería " + guarde.getNombre() + " ha sido eliminada con éxito.";
             }
 
-            // Se confirma la transacción
+            // Ejecuta el commit para aplicar definitivamente el borrado en las tablas de la BD
             tst.commit();
 
         } catch (Exception e) {
@@ -1303,46 +1437,64 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         }
     }
 
+    /**
+     * Obtiene una lista de guarderías registradas.
+     *
+     * @param ss Sesión activa de Hibernate.
+     * @return Listado de objetos Guarderia.
+     */
     static List<EducadorInfantil> consultarEducador(Session ss, String codigoGuarde) {
 
         Transaction tst = ss.beginTransaction();
+        // Inicializa la lista que almacenará los resultados para evitar retornos nulos
         List<EducadorInfantil> educadores = new ArrayList<>();
 
         try {
+            // Crea la consulta HQL filtrando por el código de la guardería asociada
             Query<EducadorInfantil> query = ss.createQuery("from EducadorInfantil e where codigoGuarderia.codigo=:cod", EducadorInfantil.class);
+            // Asigna el valor del parámetro 'cod' de forma segura para evitar SQL Injection
             query.setParameter("cod", codigoGuarde);
+            // Ejecuta la consulta y vuelca los resultados en la lista de educadores
             educadores = query.list();
 
+            // Recorre la lista obtenida para mostrar los datos por la consola de depuración
             for (EducadorInfantil educador : educadores) {
                 System.out.println("EducadorInfantil: " + educador.getNombre() + " --DNI: " + educador.getDni());
             }
 
-            // Se confirma la transacción
+            // Finaliza formalmente la unidad de trabajo de la transacción
             tst.commit();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
+        // Devuelve la lista (estará vacía si no hay resultados o hubo un error)
         return educadores;
     }
 
-    static void borrarEducador(Session ss, String codigo) {
+    /**
+     * Elimina un educador de la base de datos a partir de su identificador.
+     *
+     * @param ss Sesión activa de Hibernate.
+     * @param dni DNI o identificador del educador.
+     */
+    static void borrarEducador(Session ss, String dni) {
 
         Transaction tst = ss.beginTransaction();
 
         try {
 
-            EducadorInfantil educador = ss.get(EducadorInfantil.class, codigo);
+            // Se obtiene el objeto educador por medio de su clave primaria
+            EducadorInfantil educador = ss.get(EducadorInfantil.class, dni);
 
             if (educador == null) {
-                System.out.println("No se encontró el educador infantil con código: " + codigo);
+                System.out.println("No se encontró el educador infantil con DNI: " + dni);
             } else {
 
-                // Se realiza una consulta
-                // Borrar guardería
+                // Borrar educador
                 ss.delete(educador);
-                System.out.println("Se borró el educador infantil con código: " + codigo);
+                System.out.println("Se borró el educador infantil con DNI: " + dni);
                 etiquetaEducadorBorrado = "El educador " + educador.getNombre() + " " + educador.getApellidos() + " ha sido eliminado con éxito.";
 
             }
@@ -1361,6 +1513,12 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
 
     }
 
+    /**
+     * Recupera todas las entidades Guarderia de la base de datos.
+     *
+     * @param ss Sesión activa de Hibernate.
+     * @return Lista con todas las guarderías registradas.
+     */
     static List<Guarderia> consultarGuarderia(Session ss) {
 
         Transaction tst = ss.beginTransaction();
@@ -1370,23 +1528,26 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         String texto;
 
         try {
+            // Crea la consulta HQL
             Query<Guarderia> query = ss.createQuery("from Guarderia g", Guarderia.class);
+            // Ejecuta la consulta y vuelca los resultados en la lista
             guarderias = query.list();
 
-            if (!guarderias.isEmpty()){
-            for (Guarderia guarde : guarderias) {
-                texto = "Guardería: " + guarde.getNombre() + " --Código: " + guarde.getCodigo() + " --Capacidad: " + guarde.getCapacidad() + " --Presupuesto: " + guarde.getPresupuesto();
-                System.out.println(texto);
-                sb.append(texto).append("\n");
-                sbHTML.append(texto).append("<br>");
-            }
-            sbHTML.append("</html>");
-            listadoGuarderias = sb.toString();
-            etiquetaListadoGuarderias = sbHTML.toString();
-            } else{
-                texto="No existen guarderías que listar";
+            // Si la lista no está vacía se almacen los datos para presentarlos
+            if (!guarderias.isEmpty()) {
+                for (Guarderia guarde : guarderias) {
+                    texto = "Guardería: " + guarde.getNombre() + " --Código: " + guarde.getCodigo() + " --Capacidad: " + guarde.getCapacidad() + " --Presupuesto: " + guarde.getPresupuesto();
+                    System.out.println(texto);
+                    sb.append(texto).append("\n");
+                    sbHTML.append(texto).append("<br>");
+                }
+                sbHTML.append("</html>");
+                listadoGuarderias = sb.toString();
+                etiquetaListadoGuarderias = sbHTML.toString();
+            } else {
+                texto = "No existen guarderías que listar";
                 listadoGuarderias = texto;
-            etiquetaListadoGuarderias = texto;
+                etiquetaListadoGuarderias = texto;
             }
             // Se confirma la transacción
             tst.commit();
@@ -1395,10 +1556,18 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
             System.out.println(e.getMessage());
         }
 
+        // Devuelve la lista
         return guarderias;
     }
 
-    static List<EducadorInfantil> consultarEducadoresEJ4(Session ss, String nombreGuarderia) {
+    /**
+     * Consulta educadores de una guardería por su nombre (Ejercicio 2d).
+     *
+     * @param ss Sesión activa de Hibernate.
+     * @param nombreGuarderia Nombre del centro educativo.
+     * @return Lista de educadores de dicha guardería.
+     */
+    static List<EducadorInfantil> consultarEducadoresEJ2D(Session ss, String nombreGuarderia) {
 
         Transaction tst = ss.beginTransaction();
         List<EducadorInfantil> educadores = new ArrayList<>();
@@ -1412,20 +1581,20 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
             query.setParameter("nomGuarde", nombreGuarderia);
             educadores = query.list();
 
-            if (!educadores.isEmpty()){
-            for (EducadorInfantil educador : educadores) {
-                texto = "Educador infantil: " + educador.getApellidos() + ", " + educador.getNombre() + " --DNI: " + educador.getDni() + "--Salario: " + educador.getSalario();
-                System.out.println(texto);
-                sb.append(texto).append("\n");
-                sbHTML.append(texto).append("<br>");
-            }
-            sbHTML.append("</html>");
-            listadoEducadores = sb.toString();
-            etiquetaListadoEducadores = sbHTML.toString();
-            } else{
-                texto="No existen educadores que listar";
-            listadoEducadores = texto;
-            etiquetaListadoEducadores = texto;
+            if (!educadores.isEmpty()) {
+                for (EducadorInfantil educador : educadores) {
+                    texto = "Educador infantil: " + educador.getApellidos() + ", " + educador.getNombre() + " --DNI: " + educador.getDni() + "--Salario: " + educador.getSalario();
+                    System.out.println(texto);
+                    sb.append(texto).append("\n");
+                    sbHTML.append(texto).append("<br>");
+                }
+                sbHTML.append("</html>");
+                listadoEducadores = sb.toString();
+                etiquetaListadoEducadores = sbHTML.toString();
+            } else {
+                texto = "No existen educadores que listar";
+                listadoEducadores = texto;
+                etiquetaListadoEducadores = texto;
             }
             // Se confirma la transacción
             tst.commit();
@@ -1437,7 +1606,15 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         return educadores;
     }
 
-    static List<EducadorInfantil> consultarEducadoresEJ5(Session ss, Float salarioLimite) {
+    /**
+     * Busca educadores cuyo salario sea estrictamente mayor al valor dado
+     * (Ejercicio 2e).
+     *
+     * @param ss Sesión activa de Hibernate.
+     * @param salarioLimite Importe para filtrar la consulta.
+     * @return Lista de educadores que cumplen la condición.
+     */
+    static List<EducadorInfantil> consultarEducadoresEJ2E(Session ss, Float salarioLimite) {
 
         Transaction tst = ss.beginTransaction();
         List<EducadorInfantil> educadores = new ArrayList<>();
@@ -1451,20 +1628,20 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
             query.setParameter("sueldoLimite", salarioLimite);
             educadores = query.list();
 
-            if (!educadores.isEmpty()){
-            for (EducadorInfantil educador : educadores) {
-                texto = "Educador infantil: " + educador.getApellidos() + ", " + educador.getNombre() + " --DNI: " + educador.getDni() + "--Salario: " + educador.getSalario();
-                System.out.println(texto);
-                sb.append(texto).append("\n");
-                sbHTML.append(texto).append("<br>");
-            }
-            sbHTML.append("</html>");
-            listadoEducadoresSalarioLimite = sb.toString();
-            etiquetaListadoEducadoresSalarioLimite = sbHTML.toString();
-            } else{
-                texto="No existen educadores que listar";
+            if (!educadores.isEmpty()) {
+                for (EducadorInfantil educador : educadores) {
+                    texto = "Educador infantil: " + educador.getApellidos() + ", " + educador.getNombre() + " --DNI: " + educador.getDni() + "--Salario: " + educador.getSalario();
+                    System.out.println(texto);
+                    sb.append(texto).append("\n");
+                    sbHTML.append(texto).append("<br>");
+                }
+                sbHTML.append("</html>");
+                listadoEducadoresSalarioLimite = sb.toString();
+                etiquetaListadoEducadoresSalarioLimite = sbHTML.toString();
+            } else {
+                texto = "No existen educadores que listar";
                 listadoEducadoresSalarioLimite = texto;
-            etiquetaListadoEducadoresSalarioLimite = texto;
+                etiquetaListadoEducadoresSalarioLimite = texto;
             }
             // Se confirma la transacción
             tst.commit();
@@ -1476,6 +1653,13 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         return educadores;
     }
 
+    /**
+     * Actualiza el atributo salario de un educador en la base de datos.
+     *
+     * @param ss Sesión activa de Hibernate.
+     * @param dni DNI del educador a modificar.
+     * @param nuevoSalario Nuevo importe salarial.
+     */
     static void actualizarSalario(Session ss, String dni, Float nuevoSalario) {
 
         Transaction tst = ss.beginTransaction();
@@ -1507,11 +1691,18 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         }
     }
 
+    /**
+     * Obtiene una lista de los DNIs de todos los educadores sin duplicados.
+     *
+     * @param ss Sesión activa de Hibernate.
+     * @return Lista de Strings con los DNIs.
+     */
     static List<String> dniValoresUnicosEducadores(Session ss) {
 
         Transaction tst = ss.beginTransaction();
         List<String> dniUnicos = new ArrayList<>();
         try {
+            // Crea la consulta HQL de valores únicos (no haría falta porque DNI es PK de EducadoresInfantiles, pero considero una buena práctica)
             Query<String> query = ss.createQuery("select distinct e.dni from EducadorInfantil e", String.class);
             dniUnicos = query.list();
 
@@ -1529,11 +1720,18 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         return dniUnicos;
     }
 
+    /**
+     * Obtiene una lista de los códigos de todas las guarderías sin duplicados.
+     *
+     * @param ss Sesión activa de Hibernate.
+     * @return Lista de Strings con los códigos.
+     */
     static List<String> codigoValoresUnicosGuarderias(Session ss) {
 
         Transaction tst = ss.beginTransaction();
         List<String> codigosUnicos = new ArrayList<>();
         try {
+            // Crea la consulta HQL
             Query<String> query = ss.createQuery("select distinct g.codigo from Guarderia g", String.class);
             codigosUnicos = query.list();
 
@@ -1551,11 +1749,17 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         return codigosUnicos;
     }
 
+    /**
+     * Actualiza el contenido de los ComboBox de DNI con los valores actuales de
+     * la BD.
+     */
     private void refrescarComboBoxEducadoresUnicos() {
 
+        // Se limpian los combobox
         jComboBoxEducadores.removeAllItems();
         jComboBoxEducadoresSueldo.removeAllItems();
-// Se alimenta el combobox de educadores (valores únicos)
+
+        // Se alimenta el combobox de educadores (valores únicos)
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             for (String dni : dniValoresUnicosEducadores(session)) {
@@ -1569,10 +1773,15 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         }
     }
 
+    /**
+     * Actualiza el contenido del ComboBox de códigos de guarderías con datos
+     * frescos de la BD.
+     */
     private void refrescarComboBoxGuarderiasUnicas() {
 
+        // Se limpia combobox
         jComboBoxGuarderias.removeAllItems();
-// Se alimenta el combobox de educadores (valores únicos)
+        // Se alimenta el combobox de educadores (valores únicos)
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             for (String codigo : codigoValoresUnicosGuarderias(session)) {
@@ -1585,6 +1794,10 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         }
     }
 
+    /**
+     * Actualiza el contenido del ComboBox de nombres de guarderías con datos
+     * frescos de la BD.
+     */
     private void refrescarComboBoxNombreGuarderias() {
 
         jComboBoxNombreGuarderia.removeAllItems();
@@ -1602,9 +1815,10 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
     }
 
     /**
-     * Limpia todos los campos de entrada dentro de un contenedor dado.
+     * Vacía recursivamente los componentes de texto de un contenedor
+     * específico.
      *
-     * @param contenedor El contenedor a limpiar
+     * @param contenedor Panel o ventana a limpiar.
      */
     public void limpiarCampos(Container contenedor) {
 
@@ -1621,7 +1835,9 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
     }
 
     /**
-     * @param args the command line arguments
+     * Punto de entrada principal de la aplicación.
+     *
+     * @param args Argumentos de la línea de comandos.
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1663,7 +1879,7 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
         });
     }
 
-        /**
+    /**
      * El método validarCodigoAlfanumerico comprueba si el String aportado como
      * argumento cumple con una determinada expresión regular, el código debe
      * ser alfanumérico y admite hasta un máximo de 10 caracteres.
@@ -1712,20 +1928,25 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
     public boolean validarNumeroDosDecimales(String texto) {
 
         // Expresión regular que admite números con dos decimales, punto como separador decimal
-        String regex = "^\\d+\\.\\d{2}$";
+        String regex = "^\\d+(\\.\\d{1,2})?$";
 
-            return texto.matches(regex);
+        return texto.matches(regex);
     }
 
-    // Método para valirada fechas formato dd/mm/aaaa
+    /**
+     * Valida si una cadena de texto cumple el patrón de fecha dd/mm/aaaa.
+     *
+     * @param texto Cadena a validar.
+     * @return true si el formato es correcto, false en caso contrario.
+     */
     public boolean validarFormatoFecha(String texto) {
-    // Expresión regular para dd/mm/aaaa
-    // \d{2} espera dos dígitos, \/ la barra, y \d{4} el año
-    String regex = "^\\d{2}/\\d{2}/\\d{4}$";
+        // Expresión regular para dd/mm/aaaa
+        // \d{2} espera dos dígitos, \/ la barra, y \d{4} el año
+        String regex = "^\\d{2}/\\d{2}/\\d{4}$";
 
-    return texto.matches(regex);
-}
-    
+        return texto.matches(regex);
+    }
+
     /**
      * El método validarEntero comprueba si el String aportado como argumento
      * cumple con una determinada expresión regular, en este caso admite
@@ -1744,7 +1965,7 @@ jLabelAgregarGuardería.setText("Guardería añadida con éxito.");
 
         return texto.matches(regex);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizarSueldoEducadorButton;
     private javax.swing.JButton agregarEducadorButton;
